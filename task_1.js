@@ -1,7 +1,6 @@
 
 const {MongoClient, ObjectId }=require('mongodb')
 const uri = require('./atlas_uri')
-const mongoose= require('mongoose')
 console.log(uri)
 
 const client = new MongoClient(uri)
@@ -9,6 +8,8 @@ const dbname = "Mybase"
 const collection_name="account"
 
 const accountCollection =client.db(dbname).collection(collection_name)
+
+
 
 
 // Connect to the database
@@ -20,6 +21,8 @@ try{
     console.error('Error connecting to the database:'+err);
 }
 };
+
+
 
 /*Lehessen új felhasználókat hozzáadni a rendszerhez. 
 Minden felhasználónak legalább egy felhasználónév (username) és egy e-mail cím (email) kell rendelkeznie.
