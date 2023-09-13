@@ -8,8 +8,6 @@ const client = new MongoClient(uri)
 const dbname = "Mybase"
 const collection_name="account"
 
-
-
 const accountCollection =client.db(dbname).collection(collection_name)
 
 
@@ -23,31 +21,16 @@ try{
 }
 };
 
-
-
-//insertmany method()
- sampleAccounts = [{
-  account_id:"MDB011234813",
-  account_holder: "Ada Lovelace",
-  account_type: "checking",
-  balace: 60218,
-},
-{
-    account_id:"MDB829000001",
-    account_holder: "Muhammad ibn Musa al-Khwarizmi",
-    account_type: "savings",
-    balace: 267914249,
-},
-]
-
+const documentstoFind= {balace:{$gt: 4700}} //FIND use
 
 const main = async () =>{
 try{
     await connectToDatabase();
-
- let result= await accountCollection.insertMany(sampleAccounts)  //replace                                
- console.log('Inserted'+result.insertedCount+' documents')   //replace
-console.log(result)  // many
+    let result= accountCollection.find(documentstoFind)
+    let doCount =accountCollection.countDocuments(documentstoFind)
+    
+     await result.forEach((doc)=> console.log(doc))
+     console.log('Found '+await doCount+' document')
 } catch (err){
     console.error('Error connecting to the database: '+ err);
 } finally{
