@@ -1,7 +1,7 @@
 
 const {MongoClient, ObjectId }=require('mongodb')
 const uri = require('./atlas_uri')
-
+const mongoose= require('mongoose')
 console.log(uri)
 
 const client = new MongoClient(uri)
