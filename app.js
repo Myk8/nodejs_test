@@ -21,7 +21,7 @@ try{
 }
 };
 
-const documentstoFind= {balace:{$gt: 4700}} //FIND use
+const documentstoFind= {balace:{$gt: 5}} //search "wroted number" greater then balance
 
 const main = async () =>{
 try{
