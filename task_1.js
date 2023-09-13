@@ -21,16 +21,27 @@ try{
 }
 };
 
-const documentstoFind= {balace:{$gt: 5}} //search "wroted number" greater then balance
+/*Lehessen új felhasználókat hozzáadni a rendszerhez. 
+Minden felhasználónak legalább egy felhasználónév (username) és egy e-mail cím (email) kell rendelkeznie.
+ Az e-mail címnek egyedinek kell lennie.
+*/
+sampleAccounts = [{
+  username:"Mikey Mazza",
+  email: "mikeymazza0802@gmail.com",
+  },
+  {
+    username:"Spaghetkey",
+    email: "mikey.mazza1999@gmail.com",
+  },
+  ]
+
 
 const main = async () =>{
 try{
     await connectToDatabase();
-    let result= accountCollection.find(documentstoFind)
-    let doCount =accountCollection.countDocuments(documentstoFind)
-    
-     await result.forEach((doc)=> console.log(doc))
-     console.log('Found '+await doCount+' document')
+    let result= await accountCollection.insertMany(sampleAccounts)                                 
+ console.log('Inserted'+result.insertedCount+' documents')   
+console.log(result)  // many
 } catch (err){
     console.error('Error connecting to the database: '+ err);
 } finally{
