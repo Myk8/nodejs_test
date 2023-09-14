@@ -1,3 +1,7 @@
+/*●	Lehessen új felhasználókat hozzáadni a rendszerhez. 
+Minden felhasználónak legalább egy felhasználónév (username) és egy e-mail cím (email) kell rendelkeznie. 
+Az e-mail címnek egyedinek kell lennie.*/
+
 
 const {MongoClient, ObjectId }=require('mongodb')
 const uri = require('./atlas_uri')
@@ -9,10 +13,6 @@ const collection_name="account"
 
 const accountCollection =client.db(dbname).collection(collection_name)
 
-
-
-
-// Connect to the database
 const connectToDatabase = async () => {
 try{
     await client.connect();
@@ -23,19 +23,22 @@ try{
 };
 
 
-
-/*Lehessen új felhasználókat hozzáadni a rendszerhez. 
-Minden felhasználónak legalább egy felhasználónév (username) és egy e-mail cím (email) kell rendelkeznie.
- Az e-mail címnek egyedinek kell lennie.
-*/
 sampleAccounts = [{
   username:"Mikey Mazza",
   email: "mikeymazza0802@gmail.com",
+ 
+
   },
   {
-    username:"Spaghetkey",
-    email: "mikey.mazza1999@gmail.com",
+    username:"Barta Patrik",
+    email: "Liomspager@gmail.com",
+
   },
+  {
+    username:"Ben Mazza",
+    email: "Tesobro@gmail.com",
+  },
+
   ]
 
 
@@ -47,11 +50,8 @@ try{
     let result= await accountCollection.insertMany(sampleAccounts)                                 
  console.log('Inserted '+result.insertedCount+' documents')   
 console.log(result)  // many
-
-
-
 } catch (err){
-    console.error('Error connecting to the database: '+ err);
+    console.error('Error adding documents: '+ err);
 } finally{
     await client.close();
 }
