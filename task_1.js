@@ -42,9 +42,14 @@ sampleAccounts = [{
 const main = async () =>{
 try{
     await connectToDatabase();
+
+    
     let result= await accountCollection.insertMany(sampleAccounts)                                 
  console.log('Inserted '+result.insertedCount+' documents')   
 console.log(result)  // many
+
+
+
 } catch (err){
     console.error('Error connecting to the database: '+ err);
 } finally{
