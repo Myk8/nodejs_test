@@ -25,7 +25,7 @@ try{
 };
 
 //DELETE the person by my choiche
-const documenttoDelete={_id: new ObjectId("6503190bd005e7e6f3e0fbc4")}   
+const documenttoDelete={_id: new ObjectId("6524128f4c5bc8449f7aeb66")}   
 
 
 const main = async () =>{
